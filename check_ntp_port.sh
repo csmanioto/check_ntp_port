@@ -7,8 +7,6 @@ test_distro(){
     fi
 }
 
-#DISTRO="$(test_distro)"
-
 setup(){
     setting_user=$1
 
@@ -21,7 +19,7 @@ setup(){
         #getcap $(which nmap)
     else
         echo "Configurando em ambiente redhat like"
-        sudo install logrotate
+        sudo yum install logrotate
         sudo yum install nmap
         sudo yum install libcap
         sudo setcap cap_net_raw,cap_net_admin,cap_net_bind_service+eip $(which nmap)
@@ -79,4 +77,3 @@ case "$1" in
             echo  "check_ntp_port.sh --run ntp_server"
             ;;
 esac
-
